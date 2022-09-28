@@ -11,7 +11,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 intent = discord.Intents.default()
 intent.members = True
 intent.message_content = True
-bot = commands.Bot(command_prefix='$', intents = intent)
+bot = commands.Bot(command_prefix = '$', intents = intent)
 
 @bot.event
 async def on_ready():
