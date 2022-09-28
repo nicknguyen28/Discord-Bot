@@ -14,13 +14,15 @@ class Instance(commands.Cog):
     @commands.command()
     async def lookup(self, ctx, *query):
         queryWhole=' '.join(query)
-        author = ctx.author.mention
-        numSearches = 3
-        await ctx.send(f'Here is the top {numSearches} google searches for {queryWhole} {author} !')
+        author = ctx.author.name
+        numSearches = 5
+        description = f'**Here are the top {numSearches} google searches for {queryWhole} @{author}!**\n'
         async with ctx.typing():
             try:
-                for j in search(queryWhole, tld = 'co.in', num = numSearches, stop = numSearches, pause = 2): 
-                    await ctx.send(f'\n:arrow_right: {j}')
+                for j in search(queryWhole, tld = 'co.in', num = numSearches, stop = numSearches, pause = 2):
+                    description += f'\n:arrow_right: {j}\n'
+                embed = discord.Embed(description = description, color = 2123412)
+                await ctx.send(embed=embed)
             except:
                 return
     

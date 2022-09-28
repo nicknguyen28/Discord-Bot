@@ -25,12 +25,14 @@ async def reload(ctx):
     for filename in os.listdir('./cogs'):
         if filename.endswith('.py'):
             await bot.reload_extension(f'cogs.{filename[:-3]}')
-    await ctx.send('`Reloaded!`')
+    embed = discord.Embed(description = '**Reloaded!**')
+    await ctx.send(embed=embed)
 
 @bot.command()
 @commands.is_owner()
 async def shutdown(ctx):
-    await ctx.send('`Shutdown!`')
+    embed = discord.Embed(description = '**Shutdown!**')
+    await ctx.send(embed=embed)
     exit()
 
 bot.run(TOKEN)
