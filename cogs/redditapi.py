@@ -15,8 +15,8 @@ class RedditAPI(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def meme(self, ctx):
-        subreddit = await reddit.subreddit('memes')
+    async def r(self, ctx, subred = 'memes'):
+        subreddit = await reddit.subreddit(subred)
         posts = []
         async for post in subreddit.hot(limit = 200):
             posts.append(post)
